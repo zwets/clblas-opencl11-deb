@@ -1,4 +1,4 @@
-clblas (2.12-1build1~opencl11) bionic; urgency=medium
+clblas (2.12-1opencl11) bionic; urgency=medium
 
   * Target OpenCL 1.1 instead of 1.2
   * Apply patches from GitHub develop branch

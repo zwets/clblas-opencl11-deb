@@ -6,12 +6,10 @@ debian/.debhelper/
 debian/debhelper-build-stamp
 debian/debuild.log
 debian/files
+debian/libclblas-dev.debhelper.log
 debian/libclblas-dev.substvars
 debian/libclblas-dev/
-debian/libclblas-doc.debhelper.log
-debian/libclblas-doc.substvars
-debian/libclblas-doc/
+debian/libclblas2.debhelper.log
 debian/libclblas2.substvars
 debian/libclblas2/
 debian/tmp/
-

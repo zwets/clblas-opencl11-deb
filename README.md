@@ -30,14 +30,16 @@ the `develop` branch of [clBLAS](https://github.com/clMathLibraries/clBLAS).
 This repo generates only the `libclblas2` and `libclblas-dev` debs.  I
 stripped out the `-client` and `-doc` packages, as they have huge dependencies.
 
-## Building
+## Instructions
 
-@@TODO@@ details
-
-* Get the 2.12 release from https://github.com/clMathLibraries/clBLAS/releases
-* Unpack 
-* Copy `./debian` into the unpacked release directory
-* Install all Build-Dependencies listed in `debian/control`
-* Run `debuild -b -uc -us`
-* `sudo apt install ../libclblas2_*.deb ../libclblas-dev_*.deb`
+* Install all packages needed for building a Debian package (see elsewhere)
+* Clone this repository: `git clone git@github.com:zwets/clblas-opencl11-deb.git`
+* Enter its directory: `cd clblas-opencl11-deb`
+* Install build dependencies: `fgrep Build-Dependencies debian/control`
+* Get the 2.12 release tarball from https://github.com/clMathLibraries/clBLAS/releases
+* Unpack in this directory: `tar --strip-components=1 -xzf /path/to/tarball.tgz`
+* Undo any overwritten files: `git checkout .`
+* Refresh patches: `while dquilt push; do dquilt refresh; done`
+* Build: `debuild -b -uc -us`
+* Install: `sudo apt install ../libclblas2_*.deb ../libclblas-dev_*.deb`
 
