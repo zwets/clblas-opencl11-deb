@@ -1,0 +1,8 @@
+disable-multilib-cflags.patch
+fix-pthread-linkage.patch
+fix-doxygen-output-dir.patch
+use-system-mathjax.patch
+reproducible-build.patch
+use-boost-dynamic-libs.patch
+Detect-CBLAS-when-building-the-client.patch
+cherrypicked-develop-patches

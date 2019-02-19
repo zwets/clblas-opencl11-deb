@@ -1,0 +1,5 @@
+clBLAS for Debian (OpenCL 1.1 patched version)
+
+This is not the original Debian clblas package.
+See: https://github.com/zwets/clblas-opencl11-deb
+

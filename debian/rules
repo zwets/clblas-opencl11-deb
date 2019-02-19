@@ -1,0 +1,41 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+export DEB_CFLAGS_MAINT_APPEND = -Wall -pedantic
+export DEB_CXXFLAGS_MAINT_APPEND = -Wall -pedantic
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+
+# Fixes FTBFS on mips64* architectures. See #805893.
+DEB_HOST_ARCH := $(shell dpkg-architecture --query DEB_HOST_ARCH)
+ifneq (,$(filter mips64%,$(DEB_HOST_ARCH)))
+DEB_CFLAGS_MAINT_APPEND += -mxgot
+DEB_CXXFLAGS_MAINT_APPEND += -mxgot
+endif
+
+export BUILD_OPTIONS = \
+	-DOPENCL_VERSION=1.1 \
+	-DBUILD_CLIENT=OFF \
+	-DBUILD_KTEST=OFF \
+	-DBUILD_PERFORMANCE=OFF \
+	-DBUILD_RUNTIME=ON \
+	-DBUILD_SAMPLE=OFF \
+	-DBUILD_SHARED_LIBS=ON \
+	-DBUILD_TEST=OFF \
+	-DSUFFIX_LIB="/$(DEB_TARGET_MULTIARCH)"
+
+%:
+	dh $@ --sourcedirectory=src
+
+override_dh_auto_clean:
+	dh_auto_clean
+	find . -name "*.pyc" -delete
+
+override_dh_auto_configure:
+	dh_auto_configure -- $(BUILD_OPTIONS)
+
+override_dh_compress-indep:
+	dh_compress --indep --exclude=examples
