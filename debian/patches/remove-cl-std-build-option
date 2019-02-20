@@ -1,0 +1,22 @@
+--- a/src/library/blas/AutoGemm/Includes.py
++++ b/src/library/blas/AutoGemm/Includes.py
+@@ -272,8 +272,8 @@
+     kernelName = kernel.getName()
+     self.incStr += "extern const char * const %s_srcBuildOptions;\n" \
+         % kernelName
+-    self.cppStr += "const char * const %s_srcBuildOptions = \"-cl-std=CL%s\";\n" \
+-        % (kernelName, Common.getClCompilerVersion() )
++    self.cppStr += "const char * const %s_srcBuildOptions = \"\";\n" \
++        % kernelName
+ 
+     self.incFile.write( self.incStr )
+     self.incStr = ""
+@@ -314,7 +314,7 @@
+   def addKernel(self, kernel):
+     kernelName = kernel.getName()
+     self.incStr += "extern const char * const %s_binBuildOptions;\n" % kernelName
+-    self.cppStr += "const char * const %s_binBuildOptions = \"-cl-std=CL%s\";\n" % (kernelName, Common.getClCompilerVersion() )
++    self.cppStr += "const char * const %s_binBuildOptions = \"\";\n" % kernelName
+ 
+     self.incFile.write( self.incStr )
+     self.incStr = ""

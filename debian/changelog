@@ -1,7 +1,17 @@
-clblas (2.12-1opencl11) bionic; urgency=medium
+clblas (2.12-1zwets2) bionic; urgency=medium
+
+  * Undo -DOPENCL_VERSION=1.1, this was not the issue.
+  * Instead remove -cl-std= from the generated build options
+    - new patch remove-cl-std-build-option
+    - see http://github.com/zwets/clblas-opencl11-deb
+
+ -- Marco van Zwetselaar <io@zwets.it>  Wed, 20 Feb 2019 01:45:03 +0300
+
+clblas (2.12-1zwets1) bionic; urgency=medium
 
   * Target OpenCL 1.1 instead of 1.2
-  * Apply patches from GitHub develop branch
+  * Apply cherrypicked patches from develop branch
+    - new patch cherrypicked-develop-patches
   * Fix xgemm.cc assertion preventing diagnostics
   * Do not build the -client and -doc packages
 

@@ -6,3 +6,4 @@ reproducible-build.patch
 use-boost-dynamic-libs.patch
 Detect-CBLAS-when-building-the-client.patch
 cherrypicked-develop-patches
+remove-cl-std-build-option
