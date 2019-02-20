@@ -1,8 +1,9 @@
 # clblas-opencl11-deb
 
-This repo has the `debian` tree for building the clBLAS debs
-(`libclblas-dev`, `libclblas2`) with support for OpenCL 1.1 devices, or
-indeed any OpenCL version devices.
+This repo has the `debian` tree for building the clBLAS debs (`libclblas-dev`,
+`libclblas2`) with support for OpenCL 1.1 backends.  Currently, calling any of
+the `clblasSgemm()` functions aborts the calling program when the backend isn't
+at least OpenCL 1.2.
 
 
 ## Background
@@ -27,9 +28,9 @@ which applies a handful of patches picked from
 [clBLAS](https://github.com/clMathLibraries/clBLAS)'s develop branch.  The
 patches can be applied independently.
 
-I will file a PR to upstream and an Ubuntu bug report, but am also pushing
-this repo online for the benefit of others running into the issue, as it
-currently blocks anyone on slightly older hardware from using clBLAS or ArrayFire.
+I have filed a [PR](https://github.com/clMathLibraries/clBLAS/pull/342) upstream
+and this [Ubuntu bug report](https://bugs.launchpad.net/ubuntu/+source/clblas/+bug/1816887),
+but am keeping this repo online for the benefit of others running into the issue.
 
 
 ## Instructions
@@ -37,11 +38,6 @@ currently blocks anyone on slightly older hardware from using clBLAS or ArrayFir
 Note: the debian tree in this repo is not meant to replace the one in the
 Debian git sources.  It is a stripped down version that builds just the
 `libclblas2` and `libclblas-dev` debs.
-
-Having said that, to mainline the changes, all that should be needed is to
-add the patch(es) to the dquilt series.
-
-#### Build steps
 
 * Installed all packages needed for building a Debian package (see elsewhere)
 * Clone this repository: `git clone git@github.com:zwets/clblas-opencl11-deb.git`
